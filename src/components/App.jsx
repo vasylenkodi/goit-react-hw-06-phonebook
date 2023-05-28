@@ -1,16 +1,25 @@
-export const App = () => {
+import React, { Component } from 'react';
+import shortid from 'shortid';
+import { useDispatch, useSelector } from 'react-redux';import ContactsForm from './ContactsForm';
+import { Search } from './Search/Search';
+import Contacts from './Contacts';
+import { addContact } from 'redux/contactsSlice';
+
+export default function App() {
+
+  // const localStorageData = JSON.parse(localStorage.getItem('contacts'));
+
+  const inputId = shortid.generate();
+  const telId = shortid.generate();
+
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
+    <div>
+      <h1>Phonebook</h1>
+      <ContactsForm id={inputId} telId={telId} />
+
+      <h2>Contacts</h2>
+      <Search />
+      <Contacts />
     </div>
   );
-};
+}
